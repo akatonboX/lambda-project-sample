@@ -1,0 +1,10 @@
+﻿{
+  "extends": "./tsconfig.production.json",
+  
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts",
+    "./__tests__/**/*.ts"
+  ],
+  
+}
