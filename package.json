@@ -1,19 +1,22 @@
 {
   "name": "lambda-project-sample",
-  "version": "1.0.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "lambda"
+  ],
   "scripts": {
-    "test": "run-s \"test:* {@}\" --",
-    "test:app1": "yarn workspace @lambda-project-sample/function1 test",
-    "build": "run-s \"build:* {@}\" --",
-    "build:function1": "yarn workspace @lambda-project-sample/function1 build"
+    "test": "yarn workspace @apiproxy/lambda test",
+    "build": "sam build",
+    "deploy": "run-s \"deploy:* {@}\" --",
+    "deploy:authorizer": "cd .aws-sam/build/Authorizer/ && bestzip app.zip * && aws lambda update-function-code --function-name sample-authorizer --zip-file fileb://app.zip --profile lambda-project-sample --no-cli-pager",
+    "deploy:service1": "cd .aws-sam/build/Service1/ && bestzip app.zip * && aws lambda update-function-code --function-name sample-service1 --zip-file fileb://app.zip --profile lambda-project-sample --no-cli-pager"
   },
   "devDependencies": {
-    "@craco/craco": "^7.0.0",
+    "bestzip": "^2.2.1",
     "cross-env": "^7.0.3",
-    "npm-run-all": "^4.1.5"
-  }
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.5"
+  },
+  "dependencies": {}
 }

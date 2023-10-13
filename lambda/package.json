@@ -1,9 +1,8 @@
 {
-  "name": "@lambda-project-sample/function1",
+  "name": "@lambda-project-sample/lambda",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
+  "description": "",
   "main": "app.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
   "author": "SAM CLI",
   "license": "MIT",
   "scripts": {
@@ -13,7 +12,11 @@
     "test": "npm run compile && npm run unit"
   },
   "dependencies": {
-    "@lambda-project-sample/common-lib": "*"
+    "@aws-sdk/client-api-gateway": "^3.427.0",
+    "@types/lodash": "^4.14.199",
+    "@types/node": "^20.8.4",
+    "esbuild": "^0.14.14",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",
